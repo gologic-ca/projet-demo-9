@@ -1,8 +1,7 @@
 name: Close Invalid Issues
 
 on:
-  issues:
-    types: [labeled]
+  workflow_dispatch:
 
 jobs:
   close_invalid_issues:
@@ -20,6 +19,6 @@ jobs:
       run: npm install
 
     - name: Close invalid issues
-      run: node  .github/actions/close_invalid_issues.ts
+      run: npx ts-node .github/actions/close_invalid_issues.ts
       env:
         ACTION_TOKEN: ${{ secrets.ACTION_TOKEN }}
