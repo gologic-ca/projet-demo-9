@@ -6,8 +6,8 @@ const octokit = new Octokit({
 
 async function closeInvalidIssues() {
   try {
-    const owner = 'your-repository-owner'; // replace with repository owner
-    const repo = 'azyour-repository-name'; // replace with repository name
+    const owner = 'gologic-ca'; 
+    const repo = 'projet-demo'; 
 
     console.log('Entering closeInvalidIssues method');
     console.log(`Owner: ${owner}`);
