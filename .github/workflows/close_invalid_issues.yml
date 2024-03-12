@@ -23,4 +23,4 @@ jobs:
     - name: Close invalid issues
       run: node  .github/actions/close_invalid_issues.ts
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ACTION_TOKEN: ${{ secrets.ACTION_TOKEN }}
