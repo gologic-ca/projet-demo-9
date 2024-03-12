@@ -21,3 +21,5 @@ jobs:
 
     - name: Run create_issues.ts script
       run: npx ts-node create_issues.ts
+      env:
+        ACTION_TOKEN: ${{ secrets.ACTION_TOKEN }}
