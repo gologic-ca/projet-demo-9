@@ -17,7 +17,7 @@ jobs:
         node-version: '18'
 
     - name: Install dependencies
-      run: npm ci
+      run: npm install
 
     - name: Run create_issues.ts script
       run: npx ts-node create_issues.ts
