@@ -1,7 +1,7 @@
 import { Octokit } from "octokit";
 
 const octokit = new Octokit({
-  auth: process.env.ACTION_TOKENs,
+  auth: process.env.ACTION_TOKEN,
 });
 
 async function closeInvalidIssues() {
