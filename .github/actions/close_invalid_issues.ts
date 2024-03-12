@@ -20,7 +20,7 @@ async function closeInvalidIssues() {
     });
 
     console.log(`Found ${issues.length} open issues`);
-    const invalidIssues = issues.filter(issue => issue.labels.some(label => label === 'invalid'));
+    const invalidIssues = issues.filter(issue => issue.labels.some(label => label.name === 'invalid'));
 
     for (const issue of invalidIssues) {
       console.log(`Closing issue #${issue.number}`);
