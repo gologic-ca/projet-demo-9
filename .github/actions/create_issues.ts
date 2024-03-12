@@ -1,7 +1,7 @@
-import { Octokit } from "@octokit/rest";
+import { Octokit } from "octokit";
 
 const octokit = new Octokit({
-  auth: process.env.ACTION_TOKEN,
+  auth: process.env.ACTION_TOKENs,
 });
 
 async function closeInvalidIssues() {
@@ -16,7 +16,7 @@ async function closeInvalidIssues() {
     // create 40 issues with random label invalid or bug
     for (let i = 1; i <= 40; i++) {
       const labels = i % 2 === 0 ? ['invalid'] : ['bug'];
-      await octokit.issues.create({
+      await octokit.rest.issues.create({
         owner,
         repo,
         title: `Issue ${i}`,
@@ -25,20 +25,6 @@ async function closeInvalidIssues() {
       });
       console.log(`Issue #${i} created`);
     }
-
-
-    for (const issue of invalidIssues) {
-      console.log(`Closing issue #${issue.number}`);
-      await octokit.issues.update({
-        owner,
-        repo,
-        issue_number: issue.number,
-        state: 'closed',
-      });
-      console.log(`Issue #${issue.number} closed`);
-    }
-  } catch (error) {
-    console.error('An error occurred:', error);
   }
 }
 
