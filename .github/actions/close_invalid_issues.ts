@@ -1,4 +1,4 @@
-import { Octokit } from "@octokit/rest";
+import { Octokit } from "octokit";
 
 const octokit = new Octokit({
   auth: process.env.ACTION_TOKEN,
@@ -13,10 +13,10 @@ async function closeInvalidIssues() {
     console.log(`Owner: ${owner}`);
     console.log(`Repo: ${repo}`);
 
-    const { data: issues } = await octokit.paginate(octokit.issues.listForRepo, {
+    const issues = await octokit.paginate(octokit.rest.issues.listForRepo, {
       owner,
       repo,
-      state: 'open',
+      state: 'open'
     });
 
     console.log(`Found ${issues.length} open issues`);
@@ -24,7 +24,7 @@ async function closeInvalidIssues() {
 
     for (const issue of invalidIssues) {
       console.log(`Closing issue #${issue.number}`);
-      await octokit.issues.update({
+      await octokit.rest.issues.update({
         owner,
         repo,
         issue_number: issue.number,
