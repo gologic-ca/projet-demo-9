@@ -13,14 +13,14 @@ async function closeInvalidIssues() {
     console.log(`Owner: ${owner}`);
     console.log(`Repo: ${repo}`);
 
-    const issues = await octokit.paginate(octokit.rest.issues.listForRepo, {
+    const invalidIssues = await octokit.paginate(octokit.rest.issues.listForRepo, {
       owner,
       repo,
-      state: 'open'
+      state: 'open',
+      labels: 'invalid'
     });
 
-    console.log(`Found ${issues.length} open issues`);
-    const invalidIssues = issues.filter(issue => issue.labels.some(label => label.name === 'invalid'));
+    console.log(`Found ${invalidIssues.length} open issues`);
 
     for (const issue of invalidIssues) {
       console.log(`Closing issue #${issue.number}`);
