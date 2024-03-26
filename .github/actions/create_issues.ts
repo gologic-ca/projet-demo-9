@@ -7,7 +7,7 @@ const octokit = new Octokit({
 async function closeInvalidIssues() {
   try {
     const owner = 'gologic-ca'; 
-    const repo = 'projet-demo'; 
+    const repo = 'projet-demo-9'; 
 
     console.log('Entering closeInvalidIssues method');
     console.log(`Owner: ${owner}`);
